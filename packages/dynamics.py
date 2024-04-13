@@ -49,7 +49,7 @@ class Dynamics365():
             'OData-Version': '4.0'
         }
 
-        url = self.getRequestURL('accounts')
+        url = self.getRequestURL('accounts') + f'$filter=statuscode eq 1 &$select=(accountnumber, new_storestatus)'
         response = requests.get(url, headers=headers)
 
         if response.status_code == 200:

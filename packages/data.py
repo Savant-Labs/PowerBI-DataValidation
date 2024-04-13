@@ -134,8 +134,6 @@ class Movement():
         )
 
         comparison.columns = ['StoreNumber', 'UPC', 'Trend', 'LastMonth', 'CurrentMonth']
-        comparison['Trend'] = comparison['Trend'].astype(int)
-        comparison['LastMonth'] = comparison['LastMonth'].astype(int)
 
         log.state('Analyzing Performance Deltas...')
 
@@ -221,10 +219,16 @@ class Dynamics():
 
     def get_accounts(self):
         accounts = self.connection.getAccounts()
+        active = [
+            record["accountnumber"]
+            for record in accounts["value"]
+            if record["statuscode"] == 1
+        ]
+
         expected = [
             record["accountnumber"] 
             for record in accounts["value"]
             if record["new_storestatus"] not in [100000008, 100000006, 100000005]
         ]
 
-        return expected
+        return active, expected

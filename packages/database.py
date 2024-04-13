@@ -89,7 +89,7 @@ class Database():
             self.cursor = self.connection.cursor()
             log.state('Established a Connection to SQL Server')
         except Exception as e:
-            log.error(str(e))
+            log.error('ODBC Driver 18 for SQL Server could not open a connection: server not found')
 
             log.fatal('Failed to Connect to SQL Server - Terminating...')
             sys.exit(0)

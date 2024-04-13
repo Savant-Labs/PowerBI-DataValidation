@@ -40,11 +40,11 @@ class CustomLogger():
     @classmethod
     def _write(cls, message: str, *, error: bool = False) -> None:
         with open(cls.logfiles['events'], 'a+') as log:
-            log.write(message)
+            log.write(message +'\n')
         
         if error:
             with open(cls.logfiles['errors'], 'a+') as log:
-                log.write(message)
+                log.write(message + '\n')
         
         return
     
@@ -102,7 +102,7 @@ class CustomLogger():
     def issue(cls, message: str) -> None:
         file, color = cls._formatMessage(3, message)
 
-        cls._write(file, error=False)
+        cls._write(file, error=True)
         cls._print(color, level='ISSUE')
 
         return
@@ -111,7 +111,7 @@ class CustomLogger():
     def error(cls, message: str) -> None:
         file, color = cls._formatMessage(4, message)
 
-        cls._write(file, error=False)
+        cls._write(file, error=True)
         cls._print(color, level='ERROR')
 
         return
@@ -120,7 +120,7 @@ class CustomLogger():
     def fatal(cls, message: str) -> None:
         file, color = cls._formatMessage(5, message)
 
-        cls._write(file, error=False)
+        cls._write(file, error=True)
         cls._print(color, level='FATAL')
 
         return

@@ -79,9 +79,14 @@ class ControlFlow():
         report = cls.Movement.clean(package)
 
         cls.log.state('Removing Inactive Accounts...')
-        accounts = cls.Dynamics.get_accounts()
+        accounts, expected = cls.Dynamics.get_accounts()
 
-        final = report[report['StoreNumber'].isin(accounts)]
+        draft = report.loc[(
+            (report['StoreNumber'].isin(accounts)) | 
+            (report['StoreNumber'].isin(expected))
+        )]
+        
+        final = draft[~draft['Month%'].isnull()]
 
         return final
 
