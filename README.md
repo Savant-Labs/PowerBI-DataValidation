@@ -24,7 +24,9 @@ This way, our current data can be compared against historical trends (in our cas
 |    012345   | CHKN | Mar. 31, 2024 |  1  |
 |    012345   | OILS | Jan. 31, 2024 |  4  |
 |    067890   | CHKN | Jan. 31, 2024 |  4  |
+
 becomes
+
 | StoreNumber | Item | Report Period | Qty |
 |-------------|------|---------------|-----|
 |    012345   | CHKN | Mar. 31, 2024 |  7  |
