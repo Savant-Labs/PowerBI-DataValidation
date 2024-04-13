@@ -219,6 +219,10 @@ class Dynamics():
 
     def get_accounts(self):
         accounts = self.connection.getAccounts()
+        if accounts is None:
+            log.issue('Failed to Retrieve Account Data')
+            return None, None
+
         active = [
             record["accountnumber"]
             for record in accounts["value"]

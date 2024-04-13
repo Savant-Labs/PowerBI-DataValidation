@@ -81,11 +81,16 @@ class ControlFlow():
         cls.log.state('Removing Inactive Accounts...')
         accounts, expected = cls.Dynamics.get_accounts()
 
-        draft = report.loc[(
-            (report['StoreNumber'].isin(accounts)) | 
-            (report['StoreNumber'].isin(expected))
-        )]
-        
+        if accounts is None or expected is None:
+            cls.log.issue('Unable to process account status filter - Skipping...')
+            draft = report
+            
+        else:
+            draft = report.loc[(
+                (report['StoreNumber'].isin(accounts)) | 
+                (report['StoreNumber'].isin(expected))
+            )]
+
         final = draft[~draft['Month%'].isnull()]
 
         return final
