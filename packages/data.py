@@ -167,8 +167,8 @@ class Movement():
     @staticmethod
     def showWarnings(data: pd.DataFrame):
         df = data.loc[(
-            ((data['Trend%'] < 0.8) & (data['TrendVar'] < -10)) |
-            ((data['Month%'] < 0.8) & (data['MonthVar'] < -10)) |
+            ((data['Trend%'] < 0.8) & (data['TrendVar'] < -5)) |
+            ((data['Month%'] < 0.8) & (data['MonthVar'] < -5)) |
             ((data['CurrentMonth'] == 0) & (data['Trend'] > 10)) |
             ((data['CurrentMonth'].isnull()) & (data['Trend'] > 10)) |
             ((data['CurrentMonth'] == 0) & (data['LastMonth'] > 10)) |
