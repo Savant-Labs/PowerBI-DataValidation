@@ -90,7 +90,7 @@ class Movement():
     
     @staticmethod
     def segregate(data, cutoff: list) -> CustomDict:
-        log.debug(f'Segregating Data using Cutoff Period: {cutoff}')
+        log.debug(f'Segregating Data using Cutoff Period: {cutoff[-1]}')
 
         historical = data[~data['ReportPeriod'].isin(cutoff)]
         current = data[data['ReportPeriod'].isin(cutoff)]
