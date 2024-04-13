@@ -1,5 +1,7 @@
 *.env
 *.code-workspace
 **/__pycache__/
-**/Exports/
-**/logfiles/
+*.csv
+*.json
+errors
+events
