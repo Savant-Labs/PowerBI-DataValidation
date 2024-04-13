@@ -226,7 +226,6 @@ class Dynamics():
         active = [
             record["accountnumber"]
             for record in accounts["value"]
-            if record["statuscode"] == 1
         ]
 
         expected = [
