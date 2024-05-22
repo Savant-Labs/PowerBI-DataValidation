@@ -9,6 +9,7 @@ from datetime import datetime
 def setup():
     init()
 
+
 directory = abspath(__file__).replace('logger.py', 'logfiles/')
 
 class CustomLogger():

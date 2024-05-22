@@ -219,18 +219,18 @@ class Dynamics():
 
     def get_accounts(self):
         accounts = self.connection.getAccounts()
-        if accounts is None:
+        if len(accounts) == 0:
             log.issue('Failed to Retrieve Account Data')
             return None, None
 
         active = [
             record["accountnumber"]
-            for record in accounts["value"]
+            for record in accounts
         ]
 
         expected = [
             record["accountnumber"] 
-            for record in accounts["value"]
+            for record in accounts
             if record["new_storestatus"] not in [100000008, 100000006, 100000005]
         ]
 
